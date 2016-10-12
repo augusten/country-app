@@ -12,15 +12,19 @@ var fs = require("fs")
 var takeCountry = function ( ddata, ccountry ) {
 	var theData = ddata
 	// console.log(theData)
-	for ( i = 0; i < 3; i++ ) { //theData.length
+	for ( i = 0; i < 1; i++ ) { //theData.length
 		// console.log(theData[i])
 	// }
 		for ( key in theData[i]) {
-			console.log ( typeof(theData[i].key) )
-			// if ( theData[i].key === ccountry ) {
-			// 	console.log ( ccountry )
+			// console.log( typeof(key) )
+			// console.log ( theData[i][key] )
+			// console.log ( theData[i].key )
+			if ( theData[i][key] === ccountry ) {
+				console.log ( "hello" )
 			// }
-		}}
+		}
+	}
+}
 
 				// return (ccountry + ": Top Level Domain" + theData[i]["topLevelDomain"])
 }
