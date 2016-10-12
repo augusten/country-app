@@ -1,19 +1,38 @@
-// var getCountry = require( __dirname + '/get_country')
+// Add required library and module
+var fs = require("fs")
+var parseData = require(__dirname + "/json-file-reader")
 
-var gettld = require(__dirname + "/get_coutry")
+// the below code prints out the name of the country and its
+// top level domain from the countries.json file
+parseData( "countries.json", function ( data ) {
+	for ( i = 0; i < data.length; i++ ) {
+		for ( key in data[i]) {
+			if ( data[i][key] === process.argv[2] ) {
+				console.log(key + ": " + process.argv[2] + "\nTop Level Domain: " + data[i]["topLevelDomain"])
+			}
+		}
+	}
+})
 
-console.log( gettld( process.argv[2] ) )
+// ANOTHER WAY TO DO THE SAME
 
-// var fs = require('fs')
+/* var runThis = function ( country ) {
+* 	parseData( "countries.json", function ( data ) {
+* 		takeCountry( data )
+* 	}, country )
+* }
 
-// var countryRead = fs.readFile(__dirname + "/countries.json", 'utf8', function(err, data) {
-// 	if (err) {
-// 		console.log(err)
-// 		throw err
-// 	}
-// 	console.log(JSON.parse(data))
-// })
+* var takeCountry = function ( ddata ) {
+* 	// var theData = ddata
+* 	for ( i = 0; i < ddata.length; i++ ) {
 
-// console.log(typeof(countryRead)[0])
+* 		for ( key in ddata[i]) {
+* 			if ( ddata[i][key] === process.argv[2] ) {
+* 				console.log(key + ": " + process.argv[2] + "\nTop Level Domain: " + ddata[i]["topLevelDomain"])
+* 			}
+* 		}
+* 	}
+* }
 
-// console.log( JSON.parse( countryRead ))
+* runThis (process.argv[2])
+*/
