@@ -7,8 +7,8 @@ var parseData = require(__dirname + "/json-file-reader")
 parseData( "countries.json", function ( data ) {
 	for ( i = 0; i < data.length; i++ ) {
 		for ( key in data[i]) {
-			if ( data[i][key] === process.argv[2] ) {
-				console.log(key + ": " + process.argv[2] + "\nTop Level Domain: " + data[i]["topLevelDomain"])
+			if ( String(data[i][key]).toLowerCase() === String(process.argv[2]).toLowerCase() ) {
+				console.log(key + ": " + data[i][key] + "\nTop Level Domain: " + data[i]["topLevelDomain"])
 			}
 		}
 	}
